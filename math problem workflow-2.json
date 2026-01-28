@@ -1,0 +1,72 @@
+{
+  "name": "math problem workflow-2",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Email Processing Cost Calculation Details",
+        "formDescription": "Please Fill Email Processing Cost Calculation form!",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Scenario"
+            },
+            {
+              "fieldLabel": "Emails/day"
+            },
+            {
+              "fieldLabel": "Tasks/email"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cf25b53d-a052-4afe-a5db-8535280d1b60",
+      "name": "On form submission",
+      "webhookId": "c7ed02df-91bb-4593-8c41-f2f778e4639c"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Static values\nconst n8nCostPerMonth = 50;\nconst zapierCostPerTask = 0.025;\nconst daysInMonth = 30;\n\n// Retrieve form inputs\nconst item = $input.item;\nconst scenario = $input.first().json.Scenario || \"Default scenario\";\nconst emailsPerDay = Number($input.first().json['Emails/day']) || 0;\nconst tasksPerEmail = Number($input.first().json['Tasks/email']) || 0;\n\n// Calculations\nconst tasksPerDay = emailsPerDay * tasksPerEmail;\nconst tasksPerMonth = tasksPerDay * daysInMonth;\nconst zapierCostPerMonth = tasksPerMonth * zapierCostPerTask;\nconst savingsPerMonth = n8nCostPerMonth - zapierCostPerMonth;\n\n// Output formatted table-like data\nreturn [\n  {\n    json: {\n      \"Scenario\": scenario,\n      \"Emails/day\": emailsPerDay,\n      \"Tasks/email\": tasksPerEmail,\n      \"Tasks/day\": tasksPerDay,\n      \"Tasks/month\": tasksPerMonth,\n      \"Zapier cost/month\": `$${zapierCostPerMonth.toFixed(2)}`,\n      \"n8n cost/month\": `$${n8nCostPerMonth.toFixed(2)}`,\n      \"Savings/month\": `$${savingsPerMonth.toFixed(2)}`\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "8009ff11-39de-46f5-9822-2338934a1105",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "dcb0b8b1-e32d-48f5-aede-a572e13c4947",
+  "meta": {
+    "instanceId": "99b2dd9e5b46209f978d0035a1b6e6e89f696a3205c84cac2ea9a13b37256b6c"
+  },
+  "id": "gF22Q-yNAjrPphn6i78f1",
+  "tags": []
+}

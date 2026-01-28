@@ -1,0 +1,74 @@
+{
+  "name": "workflow 1 basic",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "About me",
+        "formDescription": "Fill the details so that i can get to know about you!",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What is your name?"
+            },
+            {
+              "fieldLabel": "What is your e mail?",
+              "fieldType": "email"
+            },
+            {
+              "fieldLabel": "What is your age?",
+              "fieldType": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a4f471e7-b5f5-484d-9af6-8b1faf6e0153",
+      "name": "On form submission",
+      "webhookId": "de7381e3-d893-4093-bd02-ada0dbedc240"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      \"What is your name?\": \"$input.first().json['What is your name?']\",\n      \"What is your e mail?\": \"$input.first().json['What is your e mail?']\",\n      \"submittedAt\": \"2026-01-28T02:47:29.160-05:00\",\n      \"formMode\": \"test\"\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        -16
+      ],
+      "id": "f8c5a852-d649-4e8d-a6b3-c9ebde305c23",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "3fae042d-6179-4a40-a441-6e081e610a92",
+  "meta": {
+    "instanceId": "99b2dd9e5b46209f978d0035a1b6e6e89f696a3205c84cac2ea9a13b37256b6c"
+  },
+  "id": "fq875Aj_tHKUczsdQX3J8",
+  "tags": []
+}
