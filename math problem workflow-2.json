@@ -42,6 +42,48 @@
       ],
       "id": "8009ff11-39de-46f5-9822-2338934a1105",
       "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1x0UJGvVNdhg-08eRnNPEKvZ26pfdrmJ5_75tsmZTHGI",
+          "mode": "list",
+          "cachedResultName": "math problem 2",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1x0UJGvVNdhg-08eRnNPEKvZ26pfdrmJ5_75tsmZTHGI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1x0UJGvVNdhg-08eRnNPEKvZ26pfdrmJ5_75tsmZTHGI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        416,
+        0
+      ],
+      "id": "526d5702-63d6-46cb-b5d1-03b055ce4e45",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2HO5YvLJwIRr94FA",
+          "name": "Google Sheets account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -56,6 +98,17 @@
           }
         ]
       ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -63,8 +116,9 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "dcb0b8b1-e32d-48f5-aede-a572e13c4947",
+  "versionId": "6927f470-45dd-43a8-a299-07408b420c8a",
   "meta": {
+    "templateCredsSetupCompleted": true,
     "instanceId": "99b2dd9e5b46209f978d0035a1b6e6e89f696a3205c84cac2ea9a13b37256b6c"
   },
   "id": "gF22Q-yNAjrPphn6i78f1",
